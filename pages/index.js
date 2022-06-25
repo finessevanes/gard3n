@@ -1,44 +1,29 @@
 import { useState, useEffect } from 'react'
-import Profiles from './profiles'
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 
 export default function Home() {
 
   const Layout = ({ children }) => {
-    const layoutStyle = `
-    bg-lens-100
-    h-screen
-    `
-
 
     return (
-      <div className={layoutStyle}>
-        <main>{children}</main>
-      </div>
+      <Container className="layout-container">
+          <main>{children}</main>
+      </Container>
     )
   }
 
   const Login = () => {
-    const loginStyle = `
-    bg-red-100
-    flex
-    `
 
     return (
-      <div className={loginStyle}>
-        <h1>Log in</h1>
-        <button>Click me</button>
+      <div className='login-container'>
+        <h1>gard3n</h1>
+        <Button variant="contained">Connect Wallet</Button>
       </div>
     )
   };
 
-  // const buttonStyle = `
-  // bg-lens-200
-  // hover:bg-green-900
-  // text-white
-  // py-2
-  // px-4
-  // rounded-full
-  // `
   return (
     <>
       <Layout>
