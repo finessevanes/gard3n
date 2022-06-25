@@ -15,11 +15,12 @@ export default function Home() {
     try {
       const res = await client.query(recommendProfiles).toPromise()
       setProfiles(res.data.recommendedProfiles)
-      console.log({ res })
     } catch (e) {
       console.log(e)
     }
   }
+
+  if (!profiles) return null
 
   return (
     <div>
