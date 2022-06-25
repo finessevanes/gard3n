@@ -1,8 +1,15 @@
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
+  const layoutStyle = `
+
+  `
+
+  const HomePageStyle = `
+  
+  `
   return (
-    <div style={{ padding: '100px'}}>
+    <div className={layoutStyle}>
       <Component {...pageProps} />
     </div>
   )
