@@ -14,6 +14,7 @@ export default function Profiles() {
   async function fetchProfiles() {
     try {
       const res = await client.query(recommendProfiles).toPromise()
+      console.log('res in profiles', res)
       setProfiles(res.data.recommendedProfiles)
     } catch (e) {
       console.log(e)

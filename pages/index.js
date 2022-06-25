@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
+import Link from 'next/link';
 
 export default function Home() {
 
@@ -9,7 +10,7 @@ export default function Home() {
 
     return (
       <Container className="layout-container">
-          <main>{children}</main>
+        <main>{children}</main>
       </Container>
     )
   }
@@ -20,6 +21,12 @@ export default function Home() {
       <div className='login-container'>
         <h1>gard3n</h1>
         <Button variant="contained">Connect Wallet</Button>
+        <Link href="/profile">
+          <Button variant="contained">
+            <a>Profile Example</a>
+          </Button>
+        </Link>
+       
       </div>
     )
   };
