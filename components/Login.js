@@ -39,7 +39,6 @@ const Login = () => {
   }
 
   const connectWallet = async () => {
-    console.log('test')
     try {
       const { ethereum } = window;
 
