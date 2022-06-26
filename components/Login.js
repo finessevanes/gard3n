@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Profiles from '../pages/Profiles'
+import Profiles from '../components/Profiles'
 
 const Login = () => {
   const [currentAccount, setCurrentAccount] = useState("");
