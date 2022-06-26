@@ -7,18 +7,11 @@ function getLibrary(provider) {
 }
 
 function MyApp({ Component, pageProps }) {
-  const layoutStyle = `
-    bg-lens-100
-    flex
-    justify-center
-    w-screen
-  `
-
   return (
     <Web3ReactProvider getLibrary={getLibrary}>
-    <div className={layoutStyle}>
-      <Component {...pageProps} />
-    </div>
+      <div className='bg-lens-100'>
+        <Component {...pageProps} />
+      </div>
     </Web3ReactProvider>
   )
 }

@@ -26,45 +26,45 @@ export default function Profiles() {
   if (!profiles) return null
 
   const profileItemStyle = `
-  m-4
   p-8
   bg-white
   shadow-custom
   rounded-lg
   w-10/12
   ml-8
-  mr-16
+  mt-4
+  mb-8
   `
 
   return (
     <div className='flex h-screen'>
       <Navigation />
       <div className='overflow-scroll'>
-      {
-        profiles.map((profile, i) => (
-          <Link key={i} href={`/profile/${profile.id}`}>
-            <a>
-              <div className={profileItemStyle}>
-                {
-                  profile.picture ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={profile.picture?.original?.url || profile.picture.uri}
-                      alt={profile.handle}
-                      className='h-20 w-20 rounded-full mb-3'
-                    />
-                  ) : (
-                    <div className='h-20 w-20 rounded-full bg-gray-500'>
-                    </div>
-                  )
-                }
-                <h4>{profile.handle}</h4>
-                <p className='text-xs'>{profile.bio ? profile.bio : CONSTANT_BIO}</p>
-              </div>
-            </a>
-          </Link>
-        ))
-      }
+        {
+          profiles.map((profile, i) => (
+              <Link key={i} href={`/profile/${profile.id}`}>
+                <a>
+                  <div className={profileItemStyle}>
+                    {
+                      profile.picture ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={profile.picture?.original?.url || profile.picture.uri}
+                          alt={profile.handle}
+                          className='h-20 w-20 rounded-full mb-3'
+                        />
+                      ) : (
+                        <div className='h-20 w-20 rounded-full bg-gray-500'>
+                        </div>
+                      )
+                    }
+                    <h4>{profile.handle}</h4>
+                    <p className='text-xs'>{profile.bio ? profile.bio : CONSTANT_BIO}</p>
+                  </div>
+                </a>
+              </Link>
+          ))
+        }
       </div>
     </div>
   )

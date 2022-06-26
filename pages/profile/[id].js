@@ -5,7 +5,7 @@ import { client, getProfiles, getPublications } from '../../api'
 import { api, utils } from "@epnsproject/frontend-sdk-staging";
 import Navigation from '../../components/Navigation';
 
-export default function Profiles() {
+export default function SelectedProfile() {
   const [profile, setProfile] = useState()
   const [publications, setPublications] = useState([])
   const router = useRouter()
@@ -56,7 +56,6 @@ export default function Profiles() {
   if (!profile) return null
 
   const profileDetailStyle = `
-  m-4
   p-8
   bg-white
   shadow-custom
@@ -89,9 +88,9 @@ export default function Profiles() {
   `
 
   return (
-    <div className='flex w-screen h-screen'>
+    <div className='flex w-screen'>
       <Navigation />
-      <div>
+      <div className='overflow-scroll'>
         <div className={profileDetailStyle}>
           <img
             src={profile.picture?.original?.url || profile.picture.uri}

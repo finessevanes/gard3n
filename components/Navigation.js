@@ -12,9 +12,13 @@ const Navigation = () => {
     mt-80
     ml-9
     `
-  
+
     const NavStyle = `
-    bg-white w-4/12 flex flex-row pl-12
+    bg-white
+    w-1/3
+    flex
+    flex-row
+    pl-12
     `
 
     return (
