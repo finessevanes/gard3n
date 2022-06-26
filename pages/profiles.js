@@ -3,7 +3,6 @@ import {
   client, recommendProfiles
 } from '../api'
 import Link from 'next/link'
-import Image from 'next/image'
 
 export default function Profiles() {
   const [profiles, setProfiles] = useState([])
