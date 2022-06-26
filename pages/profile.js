@@ -3,6 +3,8 @@ import {
     client, getProfile
 } from '../api'
 import { ethers } from 'ethers'
+import { EmbedSDK } from "@epnsproject/frontend-sdk-staging";
+import { api, utils } from "@epnsproject/frontend-sdk-staging";
 import ABI from '../abi.json'
 const CONTRACT_ADDRESS = '0xDb46d1Dc155634FbC732f92E853b10B288AD5a1d'
 const id = '0x7a36'
@@ -10,9 +12,32 @@ const id = '0x7a36'
 export default function Profile() {
     const [profile, setProfile] = useState('');
 
+    const [notifications, setNotifications] = useState([])
+
+
     useEffect(() => {
         fetchProfile()
     }, [profile])
+
+    async function epns(){
+        // define the variables required to make a request
+    const walletAddress = "0x8F52f8092f00D2594C020468FAd7E44AC78064CC";
+    const pageNumber = 1;
+    const itemsPerPage = 20;
+    // define the variables required to make a request
+    
+    //fetch the notifications
+    const fetchedNotifications = await api.fetchNotifications(walletAddress, itemsPerPage, pageNumber)
+    console.log(fetchedNotifications.results)
+    setNotifications(fetchedNotifications.results)
+    //fetch the notifications
+    
+    
+    //parse the notification fetched
+    //const parsedResponse = utils.parseApiResponse(fetchedNotifications);
+    //console.log(parsedResponse);
+    
+    }
 
     async function fetchProfile() {
         try {
@@ -48,6 +73,7 @@ export default function Profile() {
     if (!profile) return;
     return (
         <div>
+            
             {
                 profile.picture ? (
                     <img
@@ -65,6 +91,9 @@ export default function Profile() {
             <p>Followers: 47k</p>
             <p>Following: 347</p>
             <button onClick={followUser}>Follow</button>
+       
+            
         </div>
+        
     )
 }
