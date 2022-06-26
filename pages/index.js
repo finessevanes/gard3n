@@ -6,7 +6,7 @@ export default function Home() {
 
   const layoutStyle = `
   w-full
-  v-screen
+  h-screen
   `
   return (
     <div className={layoutStyle}>
