@@ -5,10 +5,9 @@ import Login from '../components/Login'
 export default function Home() {
 
   const layoutStyle = `
-  flex
   `
   return (
-    <div className="flex">
+    <div className={layoutStyle}>
       <Login/>
     </div>
   )

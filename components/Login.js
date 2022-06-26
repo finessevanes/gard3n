@@ -51,9 +51,31 @@ const Login = () => {
       }
     }
 
+    const LoginStyle = `
+
+    `
+
+    const ButtonStyle = `
+    bg-lens-200
+    hover:bg-green-600
+    text-white
+    py-3
+    px-5
+    rounded-full
+    drop-shadow-2xl
+    mt-80
+    `
+
+    const TitleStyle = `
+    text-bold drop-shadow-xl
+    text-7xl
+    font-sans
+    mt-80
+    `
+
     return (
-      <div className=''>
-        <h1>gard3n</h1>
+      <>
+        <h1 className={TitleStyle}>gard3n</h1>
         {currentAccount ? (
           <Link href="/profile">
             <button>
@@ -61,12 +83,12 @@ const Login = () => {
             </button>
           </Link>
         ) : (
-          <button onClick={connectWallet}>Connect Wallet</button>
+          <button className={ButtonStyle} onClick={connectWallet}>Connect Wallet</button>
         )
 
         }
 
-      </div>
+      </>
     )
   };
 
