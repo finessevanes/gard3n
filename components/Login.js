@@ -57,13 +57,13 @@ const Login = () => {
     `
 
   const ButtonStyle = `
-    bg-lens-200
+    bg-lens-300
     hover:bg-green-600
     text-white
     py-3
     px-5
     rounded-full
-    drop-shadow-2xl
+    shadow-custom
     mt-80
     `
 

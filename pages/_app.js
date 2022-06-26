@@ -6,7 +6,6 @@ function MyApp({ Component, pageProps }) {
     min-h-screen
     flex
     justify-center
-    text-center
   `
 
   return (

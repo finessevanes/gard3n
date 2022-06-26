@@ -6,6 +6,7 @@ import Link from 'next/link'
 
 export default function Profiles() {
   const [profiles, setProfiles] = useState([])
+  const CONSTANT_BIO = 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
   useEffect(() => {
     fetchProfiles()
   }, [])
@@ -24,10 +25,21 @@ export default function Profiles() {
 
   const profileItemStyle = `
   m-4
+  p-4
+  bg-white
+  shadow-custom
+  rounded-lg
+  w-10/12
+  ml-8
+  mr-16
   `
 
   return (
-    <div>
+    <div className='flex'>
+      <nav className='bg-white justify-start w-80'>
+        <h1 className='mt-80'>Profiles</h1>
+      </nav>
+      <div>
       {
         profiles.map((profile, i) => (
           <Link key={i} href={`/profile/${profile.id}`}>
@@ -39,20 +51,21 @@ export default function Profiles() {
                     <img
                       src={profile.picture?.original?.url || profile.picture.uri}
                       alt={profile.handle}
-                      style={{ height: "60px", width: "60px" }}
+                      className='h-16 w-16 rounded-full mb-3'
                     />
                   ) : (
-                    <div style={{ width: '60px', height: '60px', backgroundColor: 'black' }}>
+                    <div className='h-16 w-16 rounded-full bg-gray-500'>
                     </div>
                   )
                 }
                 <h4>{profile.handle}</h4>
-                <p>{profile.bio}</p>
+                <p className='text-xs'>{profile.bio ? profile.bio : CONSTANT_BIO}</p>
               </div>
             </a>
           </Link>
         ))
       }
+      </div>
     </div>
   )
 }
