@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@epnsproject/frontend-sdk-staging": "^1.8.5",
+    "@walletconnect/client": "^1.7.8",
+    "@walletconnect/qrcode-modal": "^1.7.8",
     "ethers": "5.6.9",
     "graphql": "16.5.0",
     "next": "12.1.6",
