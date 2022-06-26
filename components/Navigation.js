@@ -1,6 +1,5 @@
 import Image from 'next/image'
 
-
 const Navigation = () => {
     const ButtonStyle = `
     bg-lens-300
@@ -17,7 +16,7 @@ const Navigation = () => {
     const NavStyle = `
     bg-white w-4/12 flex flex-row pl-12
     `
-    
+
     return (
         <nav className={NavStyle}>
             <div className='mt-40 flex-row'>

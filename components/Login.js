@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Profiles from '../components/Profiles'
+import Image from 'next/image'
 
 const Login = () => {
   const [currentAccount, setCurrentAccount] = useState("");
@@ -53,7 +54,7 @@ const Login = () => {
   }
 
   const LoginStyle = `
-
+  text-center
     `
 
   const ButtonStyle = `
@@ -64,31 +65,31 @@ const Login = () => {
     px-5
     rounded-full
     shadow-custom
-    mt-80
+    mt-40
     `
 
   const TitleStyle = `
     text-bold drop-shadow-xl
-    text-7xl
+    text-4xl
     font-sans
-    mt-80
     `
 
   return (
-    <>
+    <div className={LoginStyle}>
       {currentAccount ? (
         <Profiles />
       ) : (
-        <>
+        <div className='mt-80'>
+          <Image src="/gard3n-logo.svg" height={300} width={300} alt="gard3n-logo" />
           <h1 className={TitleStyle}>gard3n</h1>
           <button className={ButtonStyle} onClick={connectWallet}>Connect Wallet</button>
-        </>
+        </div>
 
       )
 
       }
 
-    </>
+    </div>
   )
 };
 
