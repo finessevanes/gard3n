@@ -8,7 +8,6 @@ import Navigation from './Navigation'
 
 export default function Profiles() {
   const [profiles, setProfiles] = useState([])
-  const [isLoading, setIsLoading] = useState(false);
   const CONSTANT_BIO = 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
   useEffect(() => {
     fetchProfiles()
