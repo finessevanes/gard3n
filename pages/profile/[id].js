@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { client, getProfiles, getPublications } from '../../api'
 import Image from 'next/image';
+import { api, utils } from "@epnsproject/frontend-sdk-staging";
 import ABI from '../../abi.json'
 import { ethers } from 'ethers'
 
@@ -14,11 +15,34 @@ export default function Profiles() {
     const router = useRouter()
     const { id } = router.query
 
+    const [notifications, setNotifications] = useState([])
+
+
     useEffect(() => {
         if (id) {
           fetchProfile()
         }
       }, [id])
+
+      async function epns(){
+        // define the variables required to make a request
+    const walletAddress = "0x8F52f8092f00D2594C020468FAd7E44AC78064CC";
+    const pageNumber = 1;
+    const itemsPerPage = 20;
+    // define the variables required to make a request
+    
+    //fetch the notifications
+    const fetchedNotifications = await api.fetchNotifications(walletAddress, itemsPerPage, pageNumber)
+    console.log(fetchedNotifications.results)
+    setNotifications(fetchedNotifications.results)
+    //fetch the notifications
+    
+    
+    //parse the notification fetched
+    //const parsedResponse = utils.parseApiResponse(fetchedNotifications);
+    //console.log(parsedResponse);
+    
+    }
 
       async function fetchProfile() {
         try {
@@ -93,6 +117,19 @@ export default function Profiles() {
                     </div>
                 ))
             }
+            <div>
+            <div>
+          <button id="sdk-trigger-id" onClick={epns}>Subscribe to {profile.handle}'s EPNS</button>
+          </div>
+          <div>
+          <>
+      {notifications?
+      (notifications.map(( n ) => (
+        <p key={n.payload_id}>EPNS Notification: {n.payload.notification.body}</p>
+      )) ): (<p></p> )}
+    </>
+          </div>
+            </div>
         </div>
     )
 }
