@@ -90,7 +90,7 @@ export default function SelectedProfile() {
   return (
     <div className='flex w-screen'>
       <Navigation />
-      <div className='overflow-scroll'>
+      <div className='overflow-scroll h-screen'>
         <div className={profileDetailStyle}>
           <img
             src={profile.picture?.original?.url || profile.picture.uri}
