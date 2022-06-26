@@ -25,7 +25,7 @@ export default function Profiles() {
 
   const profileItemStyle = `
   m-4
-  p-4
+  p-8
   bg-white
   shadow-custom
   rounded-lg
@@ -36,7 +36,7 @@ export default function Profiles() {
 
   return (
     <div className='flex'>
-      <nav className='bg-white justify-start w-80'>
+      <nav className='bg-white justify-start w-4/12'>
         <h1 className='mt-80'>Profiles</h1>
       </nav>
       <div>
@@ -51,10 +51,10 @@ export default function Profiles() {
                     <img
                       src={profile.picture?.original?.url || profile.picture.uri}
                       alt={profile.handle}
-                      className='h-16 w-16 rounded-full mb-3'
+                      className='h-20 w-20 rounded-full mb-3'
                     />
                   ) : (
-                    <div className='h-16 w-16 rounded-full bg-gray-500'>
+                    <div className='h-20 w-20 rounded-full bg-gray-500'>
                     </div>
                   )
                 }
