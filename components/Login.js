@@ -39,6 +39,7 @@ const Login = () => {
   }
 
   const connectWallet = async () => {
+    console.log('test')
     try {
       const { ethereum } = window;
 
@@ -78,7 +79,7 @@ const Login = () => {
       {currentAccount ? (
         <Profiles />
       ) : (
-        <div className='mt-80 text-center'>
+        <div className='pt-80 text-center'>
           <Image src="/gard3n-logo.svg" height={300} width={300} alt="gard3n-logo" />
           <h1 className={TitleStyle}>gard3n</h1>
           <button className={ButtonStyle} onClick={() => { activate(WalletConnect)}}>
