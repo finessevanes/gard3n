@@ -4,7 +4,8 @@ import Profiles from '../components/Profiles'
 import Image from 'next/image'
 
 const Login = () => {
-  const [currentAccount, setCurrentAccount] = useState("");
+  const [currentAccount, setCurrentAccount] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     checkIfWalletIsConnected()
@@ -36,6 +37,7 @@ const Login = () => {
   }
 
   const connectWallet = async () => {
+    setLoading(true)
     try {
       const { ethereum } = window;
 
@@ -84,9 +86,7 @@ const Login = () => {
           <h1 className={TitleStyle}>gard3n</h1>
           <button className={ButtonStyle} onClick={connectWallet}>Connect Wallet</button>
         </div>
-
       )
-
       }
 
     </div>
