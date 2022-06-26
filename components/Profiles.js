@@ -3,7 +3,6 @@ import {
   client, recommendProfiles
 } from '../api'
 import Link from 'next/link'
-import Image from 'next/image'
 import Navigation from './Navigation'
 
 export default function Profiles() {
@@ -39,7 +38,7 @@ export default function Profiles() {
   return (
     <div className='flex h-screen'>
       <Navigation />
-      <div className='overflow-scroll'>
+      <div className='overflow-scroll w-2/3'>
         {
           profiles.map((profile, i) => (
               <Link key={i} href={`/profile/${profile.id}`}>

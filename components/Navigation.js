@@ -24,7 +24,7 @@ const Navigation = () => {
     return (
         <nav className={NavStyle}>
             <div className='mt-40 flex-row'>
-                <Image src="/gard3n-logo.svg" height={110} width={110} alt="gard3n-logo" />
+                <Image src="/gard3n-logo-01.svg" height={110} width={110} alt="gard3n-logo" />
                 <h1 className='text-center text-3xl'>Gard3n</h1>
                 <div className='pt-24 text-xl'>
                     <h1 className=''>Home</h1>
