@@ -5,8 +5,17 @@ import Image from 'next/image';
 import { api, utils } from "@epnsproject/frontend-sdk-staging";
 import ABI from '../../abi.json'
 import { ethers } from 'ethers'
+import { useWeb3React } from '@web3-react/core';
+import { Web3ReactProvider } from '@web3-react/core';
+import { Web3Provider } from '@ethersproject/providers';
+import Wallet, { WalletConnect } from './wallet';
+import { root } from 'postcss';
 
 const CONTRACT_ADDRESS = '0xDb46d1Dc155634FbC732f92E853b10B288AD5a1d'
+
+function getLibrary(provider) {
+  return new Web3Provider(provider);
+}
 
 export default function Profiles() {
     const [profile, setProfile] = useState()
@@ -16,6 +25,8 @@ export default function Profiles() {
     const { id } = router.query
 
     const [notifications, setNotifications] = useState([])
+
+    const { activate } = useWeb3React()
 
 
     useEffect(() => {
@@ -92,7 +103,19 @@ export default function Profiles() {
 
     return (
         <div>
-            <button onClick={connectWallet}>Connect</button>
+          
+         
+            <button
+        onClick={() => {activate(WalletConnect)
+          ;
+        }}
+        type='button'
+        className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'
+      >
+        WalletConnect
+      </button>
+            <button onClick={connectWallet}type='button'
+        className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'>Connect</button>
             {
                 profile.picture ? (
                     <img
@@ -119,7 +142,8 @@ export default function Profiles() {
             }
             <div>
             <div>
-          <button id="sdk-trigger-id" onClick={epns}>Subscribe to {profile.handle}'s EPNS</button>
+          <button id="sdk-trigger-id" onClick={epns}type='button'
+        className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'>Subscribe to {profile.handle}'s EPNS</button>
           </div>
           <div>
           <>
