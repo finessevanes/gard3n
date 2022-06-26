@@ -37,9 +37,9 @@ export default function Profiles() {
   `
 
   return (
-    <div className='flex'>
+    <div className='flex h-screen'>
       <Navigation />
-      <div>
+      <div className='overflow-scroll'>
       {
         profiles.map((profile, i) => (
           <Link key={i} href={`/profile/${profile.id}`}>

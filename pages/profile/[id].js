@@ -2,34 +2,16 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { client, getProfiles, getPublications } from '../../api'
-import Image from 'next/image';
 import { api, utils } from "@epnsproject/frontend-sdk-staging";
-import ABI from '../../abi.json'
-import { ethers } from 'ethers'
-import { useWeb3React } from '@web3-react/core';
-import { Web3ReactProvider } from '@web3-react/core';
-import { Web3Provider } from '@ethersproject/providers';
-import Wallet, { WalletConnect } from '../../components/Wallet';
-import { root } from 'postcss';
 import Navigation from '../../components/Navigation';
-
-const CONTRACT_ADDRESS = '0xDb46d1Dc155634FbC732f92E853b10B288AD5a1d'
-
-function getLibrary(provider) {
-  return new Web3Provider(provider);
-}
 
 export default function Profiles() {
   const [profile, setProfile] = useState()
   const [publications, setPublications] = useState([])
-  const [account, setAccount] = useState('')
   const router = useRouter()
   const { id } = router.query
 
   const [notifications, setNotifications] = useState([])
-
-  const { activate } = useWeb3React()
-
 
   useEffect(() => {
     if (id) {
@@ -68,36 +50,6 @@ export default function Profiles() {
       setPublications(pubs.data.publications.items)
     } catch (err) {
       console.log('error fetching profile...', err)
-    }
-  }
-
-  async function connectWallet() {
-    const accounts = await window.ethereum.request({
-      method: "eth_requestAccounts"
-    })
-    console.log('accounts: ', accounts)
-    accounts[0]
-    setAccount(account)
-  }
-
-  function getSigner() {
-    const provider = new ethers.providers.Web3Provider(window.ethereum)
-    return provider.getSigner();
-  }
-
-  async function followUser() {
-    const contract = new ethers.Contract(
-      CONTRACT_ADDRESS,
-      ABI,
-      getSigner()
-    )
-
-    try {
-      const tx = await contract.follow([id], [0x0])
-      await tx.wait()
-      console.log(`successfully followed ... ${profile.handle}`)
-    } catch (err) {
-      console.log('error: ', err)
     }
   }
 
@@ -147,14 +99,18 @@ export default function Profiles() {
             className='h-40 w-40 rounded-full mb-3'
           />
           <h4>{profile.handle}</h4>
-          <button id="sdk-trigger-id" onClick={epns} type='button'
-              className={ButtonStyle}>Sign Up for EPNS</button>
+          <button
+            id="sdk-trigger-id"
+            onClick={epns}
+            type='button'
+            className={ButtonStyle}
+          >
+            Sign Up for EPNS
+          </button>
           <p>{profile.bio}</p>
           <p>Followers: {profile.stats.totalFollowers}</p>
           <p>Following: {profile.stats.totalFollowing}</p>
-
         </div>
-
         {
           publications.map((pub, i) => (
             <div key={i} className={profilePublicationStyle}>
@@ -162,16 +118,10 @@ export default function Profiles() {
             </div>
           ))
         }
-        <div>
-          <div>
-            <>
-              {notifications ?
-                (notifications.map((n) => (
-                  <p key={n.payload_id}>EPNS Notification: {n.payload.notification.body}</p>
-                ))) : (<p></p>)}
-            </>
-          </div>
-        </div>
+        {notifications ?
+          (notifications.map((n) => (
+            <p key={n.payload_id}>EPNS Notification: {n.payload.notification.body}</p>
+          ))) : (<p></p>)}
       </div>
     </div>
   )
