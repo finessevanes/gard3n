@@ -3,6 +3,8 @@ import {
   client, recommendProfiles
 } from '../api'
 import Link from 'next/link'
+import Image from 'next/image'
+import Navigation from './Navigation'
 
 export default function Profiles() {
   const [profiles, setProfiles] = useState([])
@@ -34,11 +36,11 @@ export default function Profiles() {
   mr-16
   `
 
+
+
   return (
     <div className='flex'>
-      <nav className='bg-white justify-start w-4/12'>
-        <h1 className='mt-80'>Profiles</h1>
-      </nav>
+      <Navigation />
       <div>
       {
         profiles.map((profile, i) => (
