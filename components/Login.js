@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Profiles from '../components/Profiles'
 import Image from 'next/image'
-import Wallet, { WalletConnect } from '../components/Wallet';
+import { WalletConnect } from '../components/Wallet';
 import { useWeb3React } from '@web3-react/core';
 
 const Login = () => {
@@ -56,10 +56,6 @@ const Login = () => {
     }
   }
 
-  const LoginStyle = `
-  
-    `
-
   const ButtonStyle = `
     bg-lens-300
     hover:bg-green-600
@@ -78,7 +74,7 @@ const Login = () => {
     `
 
   return (
-    <div className={LoginStyle}>
+    <div>
       {currentAccount ? (
         <Profiles />
       ) : (
@@ -92,7 +88,6 @@ const Login = () => {
         </div>
       )
       }
-
     </div>
   )
 };
