@@ -9,9 +9,9 @@ function getLibrary(provider) {
 function MyApp({ Component, pageProps }) {
   const layoutStyle = `
     bg-lens-100
-    h-screen
     flex
     justify-center
+    w-screen
   `
 
   return (

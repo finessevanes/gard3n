@@ -36,8 +36,6 @@ export default function Profiles() {
   mr-16
   `
 
-
-
   return (
     <div className='flex'>
       <Navigation />

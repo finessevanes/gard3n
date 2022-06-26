@@ -57,7 +57,7 @@ const Login = () => {
   }
 
   const LoginStyle = `
-  text-center
+  
     `
 
   const ButtonStyle = `
@@ -82,7 +82,7 @@ const Login = () => {
       {currentAccount ? (
         <Profiles />
       ) : (
-        <div className='mt-80'>
+        <div className='mt-80 text-center'>
           <Image src="/gard3n-logo.svg" height={300} width={300} alt="gard3n-logo" />
           <h1 className={TitleStyle}>gard3n</h1>
           <button className={ButtonStyle} onClick={() => { activate(WalletConnect)}}>

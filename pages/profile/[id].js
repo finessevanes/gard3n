@@ -134,11 +134,10 @@ export default function Profiles() {
   px-5
   rounded-full
   shadow-custom
-  mt-40
   `
 
   return (
-    <div className='flex'>
+    <div className='flex w-screen h-screen'>
       <Navigation />
       <div>
         <div className={profileDetailStyle}>
@@ -148,6 +147,8 @@ export default function Profiles() {
             className='h-40 w-40 rounded-full mb-3'
           />
           <h4>{profile.handle}</h4>
+          <button id="sdk-trigger-id" onClick={epns} type='button'
+              className={ButtonStyle}>Sign Up for EPNS</button>
           <p>{profile.bio}</p>
           <p>Followers: {profile.stats.totalFollowers}</p>
           <p>Following: {profile.stats.totalFollowing}</p>
@@ -162,10 +163,6 @@ export default function Profiles() {
           ))
         }
         <div>
-          <div>
-            <button id="sdk-trigger-id" onClick={epns} type='button'
-              className={ButtonStyle}>Sign Up for EPNS</button>
-          </div>
           <div>
             <>
               {notifications ?
