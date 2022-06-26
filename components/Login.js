@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Profiles from '../components/Profiles'
+import Image from 'next/image'
+import Wallet, { WalletConnect } from '../components/Wallet';
+import { useWeb3React } from '@web3-react/core';
 
 const Login = () => {
-  const [currentAccount, setCurrentAccount] = useState("");
+  const [currentAccount, setCurrentAccount] = useState("")
+  const { activate } = useWeb3React()
 
   useEffect(() => {
     checkIfWalletIsConnected()
@@ -53,42 +57,43 @@ const Login = () => {
   }
 
   const LoginStyle = `
-
+  text-center
     `
 
   const ButtonStyle = `
-    bg-lens-200
+    bg-lens-300
     hover:bg-green-600
     text-white
     py-3
     px-5
     rounded-full
-    drop-shadow-2xl
-    mt-80
+    shadow-custom
+    mt-40
     `
 
   const TitleStyle = `
     text-bold drop-shadow-xl
-    text-7xl
+    text-4xl
     font-sans
-    mt-80
     `
 
   return (
-    <>
+    <div className={LoginStyle}>
       {currentAccount ? (
         <Profiles />
       ) : (
-        <>
+        <div className='mt-80'>
+          <Image src="/gard3n-logo.svg" height={300} width={300} alt="gard3n-logo" />
           <h1 className={TitleStyle}>gard3n</h1>
+          <button className={ButtonStyle} onClick={() => { activate(WalletConnect)}}>
+            WalletConnect
+          </button>
           <button className={ButtonStyle} onClick={connectWallet}>Connect Wallet</button>
-        </>
-
+        </div>
       )
-
       }
 
-    </>
+    </div>
   )
 };
 
