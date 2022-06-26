@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Profiles from './profiles'
+import Wallet from './wallet'
 
 export default function Home() {
 
@@ -41,6 +42,7 @@ export default function Home() {
   // `
   return (
     <>
+      <Wallet/>
       <Layout>
         <Login />
       </Layout>
